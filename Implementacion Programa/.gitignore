@@ -1,0 +1,11 @@
+# Archivos compilados
+*.class
+
+# Carpeta de compilación
+out/
+
+# Configuración de VSCode (opcional)
+.vscode/
+
+# Archivos del sistema
+.DS_Store

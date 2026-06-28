@@ -18,7 +18,11 @@ public class CargadorCSV {
 
         try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
 
-            String encabezado = br.readLine(); 
+            String encabezado = br.readLine();
+            if (encabezado == null) {
+                return lista;
+            }
+
             String linea;
             int numeroLinea = 1;
 

@@ -2,8 +2,7 @@ package estructuras;
 
 public class Videojuego {
 
-
-    private int    id;
+    private String id;
     private String nombre;
     private String genero;
     private String plataforma;
@@ -13,12 +12,11 @@ public class Videojuego {
     private String desarrollador;
     private String editor;
     private double precio;
-    private String modoJuego;       
-    private String multijugador;    
+    private String modoJuego;
+    private String multijugador;
     private double tamanoGb;
 
-
-    public Videojuego(int id, String nombre, String genero, String plataforma,
+    public Videojuego(String id, String nombre, String genero, String plataforma,
                       double puntuacion, long descargas, String fechaLanzamiento,
                       String desarrollador, String editor, double precio,
                       String modoJuego, String multijugador, double tamanoGb) {
@@ -37,8 +35,7 @@ public class Videojuego {
         this.tamanoGb         = tamanoGb;
     }
 
-
-    public int    getId()               { return id; }
+    public String getId()               { return id; }
     public String getNombre()           { return nombre; }
     public String getGenero()           { return genero; }
     public String getPlataforma()       { return plataforma; }
@@ -52,7 +49,7 @@ public class Videojuego {
     public String getMultijugador()     { return multijugador; }
     public double getTamanoGb()         { return tamanoGb; }
 
-    public void setId(int id)                         { this.id = id; }
+    public void setId(String id)                      { this.id = id; }
     public void setNombre(String nombre)              { this.nombre = nombre; }
     public void setGenero(String genero)              { this.genero = genero; }
     public void setPlataforma(String plataforma)      { this.plataforma = plataforma; }
@@ -66,11 +63,10 @@ public class Videojuego {
     public void setMultijugador(String multijugador)  { this.multijugador = multijugador; }
     public void setTamanoGb(double tamanoGb)          { this.tamanoGb = tamanoGb; }
 
-
     @Override
     public String toString() {
         return "Videojuego{" +
-                "id="               + id               +
+                "id='"              + id               + '\'' +
                 ", nombre='"        + nombre           + '\'' +
                 ", genero='"        + genero           + '\'' +
                 ", plataforma='"    + plataforma       + '\'' +
@@ -86,19 +82,23 @@ public class Videojuego {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Videojuego)) return false;
+        Videojuego otro = (Videojuego) obj;
+        return id != null && id.equals(otro.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return (id != null) ? id.hashCode() : 0;
+    }
+
     public String toCSV() {
-        return id + "," +
-               nombre + "," +
-               genero + "," +
-               plataforma + "," +
-               puntuacion + "," +
-               descargas + "," +
-               fechaLanzamiento + "," +
-               desarrollador + "," +
-               editor + "," +
-               precio + "," +
-               modoJuego + "," +
-               multijugador + "," +
-               tamanoGb;
+        return id + "," + nombre + "," + genero + "," + plataforma + "," +
+               puntuacion + "," + descargas + "," + fechaLanzamiento + "," +
+               desarrollador + "," + editor + "," + precio + "," +
+               modoJuego + "," + multijugador + "," + tamanoGb;
     }
 }
